@@ -157,6 +157,7 @@ body {
   border-radius: 8px;
   cursor: pointer;
 
+  
   background: #111827;
   color: white;
 }
@@ -191,6 +192,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  
 }
 
 .card-title {
@@ -246,6 +248,8 @@ body {
   height: 40px;
   font-size: 14px;
   border-radius: 8px;
+  justify-content: center;
+  width: 50%;
   cursor: pointer;
 }
 
@@ -253,13 +257,13 @@ body {
   background: #111827;
   color: white;
   border: none;
-  width: 50%;
+  width: 100%;
 }
 
 .card-btn.secondary {
   background: #f3f4f6;
   border: none;
-  width: 50%;
+  width: 100%;
 }
 
 .card-btn.outline {
