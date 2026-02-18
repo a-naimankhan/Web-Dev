@@ -1,0 +1,94 @@
+.card {
+  border : 1px solid #ddd;
+  border-radius: 10px;
+  padding : 10px;
+  max-width: 250px;
+
+  display: flex;
+  flex-direction: column;
+  gap : 10px;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border: 5px;
+  gap: 10px;
+}
+.card-content h3 {
+  margin : 0;
+  font-size : 1.1rem;
+}
+
+.price {
+  font-weight: bold;
+  color : #2a9b8f;
+}
+
+.rating {
+  color : #f4a261;
+}
+
+.share-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.share-buttons .whatsapp-button {
+  background-color: #008132;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 30px;
+  font-size: 0.9rem;
+}
+
+.share-buttons .whatsapp-button:hover {
+  background-color: #008132;
+  font-weight: bold;
+}
+
+
+.share-buttons .telegram-button {
+  background-color: #0088cc;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 30px;
+  font-size: 0.9rem;
+}
+
+.share-buttons .telegram-button:hover {
+  background-color: #024775;
+  font-weight: bold;
+}
+
+
+/* .share-buttons button #whatsapp-button {
+  background-color: #25D366;
+}
+.share-buttons button .telegram-button {
+  background-color: #0088cc;
+}
+.share-buttons button .whatsapp-button:hover {
+  background-color: #008132;
+  font-weight: bold;
+}
+
+.share-buttons button #telegram-button:hover {
+  background-color: #024775;
+  font-weight: bold;
+}
+ */
+
+/* .share-button a {
+  margin-right : 5px;
+  text-decoration: none;
+  color : #0077cc;
+  font-size:0.9rem;
+} */
+

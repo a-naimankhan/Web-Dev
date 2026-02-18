@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+    margin : 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.Main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 50px;
+}
+
+
+.color-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px ;
+    gap : 10px;
+}
+
+.helpfull-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px ;
+    gap : 10px;
+}
+
+.color-btn {
+    height : 50px;
+    width : 50px;
+    border-radius : 50px;
+    border: 3px solid white;
+    cursor: pointer;
+}
+
+.color-btn #red {
+    background-color: red;
+}
+
+.color-btn #green {
+    background-color: green;
+}
+.color-btn #blue {
+    background-color: blue;
+}
+
+.color-btn #orange {
+    background-color: orange;
+}
+.color-btn #green {
+    background-color: green;
+}
+
+.color-btn:hover {
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+}
+
+.random-color-btn {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: aliceblue ;
+}
+
+.reset-btn {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: gray;
+}
+

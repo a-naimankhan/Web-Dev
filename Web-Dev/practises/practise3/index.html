@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Switcher</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main role="main" class="container">
+        <div class = "header">
+        <span id="color-code">
+        <p> Current Color </p>
+        </span>
+        </div>
+
+        <div class="color-buttons">
+            <button class="color-btn" id="red" onclick="changeColor('red')">Red</button>
+            <button class="color-btn" id = "green" onclick="changeColor('green')">Green</button>
+            <button class="color-btn" id="blue" onclick="changeColor('blue')">Blue</button>
+            <button class="color-btn" id = "purple" onclick="changeColor('Purple')">Purple</button>
+            <button class="color-btn" id = "orange" onclick="changeColor('Orange')">Orange</button>
+        </div>
+
+        <div class = "helpfull-buttons">
+        <div class="random-color-btn">
+            <button class="random-color-btn" onclick="changeRandomColor()">Random Color</button>
+
+        </div>
+
+        <div class="reset-btn">
+            <button class="reset-btn" onclick="reset()">Reset</button>
+        </div>
+        </div>
+    </main>
+<script src="script.js"></script>
+</body>
+</html>
