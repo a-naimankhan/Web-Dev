@@ -10,7 +10,15 @@
     <p class="rating">
       {{product.rating | stars }}
     </p>
-
+    <div class="favourite-button">
+      <button class="favorite-btn" (click)="toggleFavorite.emit()">
+      @if (isFavorite) {
+        ❤️
+      } @else {
+        🤍
+      }
+      </button>
+    </div>
     <div class="share-buttons">
       <!-- <a [href]= "whatsappLink">WhatsApp</a>
       <hr>

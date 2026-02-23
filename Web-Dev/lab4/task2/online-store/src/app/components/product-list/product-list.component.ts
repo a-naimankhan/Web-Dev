@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component , signal , computed } from '@angular/core'
 import { CommonModule } from '@angular/common';
 import { Product } from '../../models/product.model'
 import { ProductCard } from "../product-card/product-card";
@@ -8,10 +8,27 @@ import { ProductCard } from "../product-card/product-card";
   templateUrl : './product-list.component.html',
   styleUrl : './product-list.component.css',
   standalone: true,
-  imports: [CommonModule, ProductCard]
+  imports: [CommonModule, ProductCard , ]
 })
 
 export class ProductListComponent {
+  // products : Product[] = [];
+  favoriteIds = signal<number[]>([]);
+favoritesCount = computed(() => this.favoriteIds().length);
+
+  toggleFavorite(id : number) {
+    this.favoriteIds.update((ids) => {
+      if (ids.includes(id)) {
+        return ids.filter((i) => i !== id);
+      }
+      return [...ids, id];
+    })
+  }
+
+  isFavorite(id : number) {
+    return this.favoriteIds().includes(id);
+  }
+
   products : Product[] = [
     {
       id  : 1 ,
@@ -145,4 +162,6 @@ export class ProductListComponent {
     //To do add 9 more items :
     // }
   ];
+
+
 }

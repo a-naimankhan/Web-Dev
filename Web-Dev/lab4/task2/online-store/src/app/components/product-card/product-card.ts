@@ -1,4 +1,4 @@
-import { Component , Input } from '@angular/core';
+import { Component , EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product.model'
 import { DecimalPipe } from '@angular/common';
 import { StarsPipe } from '../../pipes/index';
@@ -14,7 +14,8 @@ import {ActivatedRoute, Router } from '@angular/router'
 })
 export class ProductCard {
   @Input() product!: Product;
-
+  @Input() isFavorite!: boolean;
+  @Output() toggleFavorite = new EventEmitter<void>();
   // get whatsappLink() {
   //    const message = `Check out this product: ${this.product.link}`;
   //   return 'https://api.whatsapp.com/send?text=' + encodeURIComponent(message);
