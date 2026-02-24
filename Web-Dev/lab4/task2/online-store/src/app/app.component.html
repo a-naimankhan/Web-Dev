@@ -1,15 +1,24 @@
-<nav class="nav-bar">
-  <h2> Kaspi-kz online store </h2>
-  <div class = "kaspi-icon-img" >
-    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFbE-AQziVVWbzXz9YpMayYKNK-1PdtssGmw&s">
-  </div>
-
-</nav>
-
-
-<section class = "products-section">
-
-<div class="container">
-  <app-product-list></app-product-list>
+<div class="category-navigation">
+  @for (cat of categories; track cat.id) {
+    <button
+      (click)="selectCategory(cat.id)"
+      [class.active]="selectedCategoryId === cat.id">
+      {{ cat.name }}
+    </button>
+  }
 </div>
-</section>
+
+<hr>
+
+@if (selectedCategoryId) {
+  <app-product-list
+    [products]="filteredProducts"
+    (onRemove)="handleProductRemoved($event)">
+  </app-product-list>
+} @else {
+  <div class="welcome-message">
+    <h2>Добро пожаловать!</h2>
+    <p>Пожалуйста, выберите категорию, чтобы увидеть товары.</p>
+  </div>
+}
+

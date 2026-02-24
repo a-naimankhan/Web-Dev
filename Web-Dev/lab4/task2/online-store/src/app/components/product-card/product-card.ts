@@ -2,40 +2,41 @@ import { Component , EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product.model'
 import { DecimalPipe } from '@angular/common';
 import { StarsPipe } from '../../pipes/index';
-import {ActivatedRoute, Router } from '@angular/router'
 
 @Component({
   selector: 'app-product-card',
-  // imports: [Product],
   templateUrl: './product-card.html',
   styleUrl: './product-card.css',
   standalone: true,
-  imports: [DecimalPipe , StarsPipe]
+  imports: [DecimalPipe, StarsPipe]
 })
 export class ProductCard {
   @Input() product!: Product;
   @Input() isFavorite!: boolean;
-  @Output() toggleFavorite = new EventEmitter<void>();
-  // get whatsappLink() {
-  //    const message = `Check out this product: ${this.product.link}`;
-  //   return 'https://api.whatsapp.com/send?text=' + encodeURIComponent(message);
-  // }
+  @Output() toggleFavoriteEvent = new EventEmitter<void>();
+  @Output() onRemove = new EventEmitter<number>();
 
-  // get telegramLink() {
-  //   return 'https://t.me/share/url?url=' + encodeURIComponent(this.product.link);
-  // }
+  like() {
+    if (this.product) {
+      this.product.likes++;
+    }
+  }
 
-  constructor(private router : Router , private route : ActivatedRoute) {}
+  remove() {
+    if (this.product) {
+      this.onRemove.emit(this.product.id);
+    }
+  }
 
   shareOnWhatsApp() {
-    const kaspiLink = this.router.url;
-    const shareUrl = `https://wa.me/?text=Check out this product: ${kaspiLink}`;
+    const message = `Check out this product: ${this.product.link}`;
+    const shareUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(shareUrl, '_blank');
   }
 
   shareOnTelegram() {
-    const kaspiLink = this.route.url;
-    const shareUrl = `https://t.me/share/url?url=${kaspiLink}`;
+    const message = `Check out this product: ${this.product.link}`;
+    const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(this.product.link)}`;
     window.open(shareUrl, '_blank');
   }
 }
