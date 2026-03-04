@@ -1,0 +1,14 @@
+<section>
+  <h2>Photos for album {{ albumId }}</h2>
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="!loading">
+    <div class="grid">
+      <div class="card" *ngFor="let p of photos">
+        <img [src]="p.thumbnailUrl" [alt]="p.title" />
+      </div>
+    </div>
+    <div class="actions">
+      <button (click)="back()">Back</button>
+    </div>
+  </div>
+</section>
