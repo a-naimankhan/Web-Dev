@@ -1,0 +1,41 @@
+$kind: http-request
+name: POST Create Product
+method: POST
+url: '{{baseUrl}}/api/products/'
+order: 2000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "Laptop",
+      "price": 999.99,
+      "description": "A powerful laptop",
+      "count": 10,
+      "is_active": true,
+      "category": {"name": "Electronics"}
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 201", function () {
+          pm.response.to.have.status(201);
+      });
+
+      pm.test("Response has id, name, price, is_active", function () {
+          const json = pm.response.json();
+          pm.expect(json).to.have.property('id');
+          pm.expect(json).to.have.property('name');
+          pm.expect(json).to.have.property('price');
+          pm.expect(json).to.have.property('is_active');
+      });
+
+      pm.test("is_active is true", function () {
+          const json = pm.response.json();
+          pm.expect(json.is_active).to.be.true;
+      });
+
+      pm.collectionVariables.set("productId", pm.response.json().id);

@@ -1,0 +1,18 @@
+$kind: http-request
+name: GET Single Category
+method: GET
+url: '{{baseUrl}}/api/categories/{{categoryId}}/'
+order: 3000
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response has id and name", function () {
+          const json = pm.response.json();
+          pm.expect(json).to.have.property('id');
+          pm.expect(json).to.have.property('name');
+      });

@@ -1,0 +1,8 @@
+$kind: http-request
+name: GET Category by ID
+method: GET
+url: '{{base_url}}/categories/1/'
+order: 2000
+headers:
+  - key: Content-Type
+    value: application/json

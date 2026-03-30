@@ -1,0 +1,20 @@
+$kind: http-request
+name: GET Single Product
+method: GET
+url: '{{baseUrl}}/api/products/{{productId}}/'
+order: 3000
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response has id, name, price, category", function () {
+          const json = pm.response.json();
+          pm.expect(json).to.have.property('id');
+          pm.expect(json).to.have.property('name');
+          pm.expect(json).to.have.property('price');
+          pm.expect(json).to.have.property('category');
+      });

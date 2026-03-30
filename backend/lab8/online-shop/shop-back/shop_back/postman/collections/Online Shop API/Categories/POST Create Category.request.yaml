@@ -1,0 +1,14 @@
+$kind: http-request
+name: POST Create Category
+method: POST
+url: '{{base_url}}/categories/'
+order: 4000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "New Category"
+    }

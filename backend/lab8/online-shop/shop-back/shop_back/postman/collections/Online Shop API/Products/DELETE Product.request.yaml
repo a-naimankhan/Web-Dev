@@ -1,0 +1,8 @@
+$kind: http-request
+name: DELETE Product
+method: DELETE
+url: '{{base_url}}/products/1/'
+order: 5000
+headers:
+  - key: Content-Type
+    value: application/json

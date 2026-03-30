@@ -1,0 +1,30 @@
+$kind: http-request
+name: GET List Products
+method: GET
+url: '{{baseUrl}}/api/products/'
+order: 1000
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response is an array", function () {
+          const json = pm.response.json();
+          pm.expect(json).to.be.an('array');
+      });
+
+      pm.test("Each item has required fields", function () {
+          const json = pm.response.json();
+          json.forEach(function (item) {
+              pm.expect(item).to.have.property('id');
+              pm.expect(item).to.have.property('name');
+              pm.expect(item).to.have.property('price');
+              pm.expect(item).to.have.property('description');
+              pm.expect(item).to.have.property('count');
+              pm.expect(item).to.have.property('is_active');
+              pm.expect(item).to.have.property('category');
+          });
+      });

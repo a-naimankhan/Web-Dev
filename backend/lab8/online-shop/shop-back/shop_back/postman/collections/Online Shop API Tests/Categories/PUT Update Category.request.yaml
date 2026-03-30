@@ -1,0 +1,26 @@
+$kind: http-request
+name: PUT Update Category
+method: PUT
+url: '{{baseUrl}}/api/categories/{{categoryId}}/'
+order: 4000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "Updated Electronics"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Name equals Updated Electronics", function () {
+          const json = pm.response.json();
+          pm.expect(json.name).to.eql("Updated Electronics");
+      });

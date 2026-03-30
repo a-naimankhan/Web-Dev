@@ -1,0 +1,12 @@
+$kind: http-request
+name: GET Non-existent Product
+method: GET
+url: '{{baseUrl}}/api/products/99999/'
+order: 2000
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 404", function () {
+          pm.response.to.have.status(404);
+      });

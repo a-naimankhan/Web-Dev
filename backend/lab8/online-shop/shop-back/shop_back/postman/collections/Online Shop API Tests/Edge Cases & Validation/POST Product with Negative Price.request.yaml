@@ -1,0 +1,26 @@
+$kind: http-request
+name: POST Product with Negative Price
+method: POST
+url: '{{baseUrl}}/api/products/'
+order: 5000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "Bad Product",
+      "price": -10,
+      "description": "test",
+      "count": 1,
+      "is_active": true,
+      "category": {"name": "Electronics"}
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 400 (validation error expected)", function () {
+          pm.response.to.have.status(400);
+      });

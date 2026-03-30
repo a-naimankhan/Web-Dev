@@ -1,0 +1,12 @@
+$kind: http-request
+name: GET Non-existent Category
+method: GET
+url: '{{baseUrl}}/api/categories/99999/'
+order: 1000
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 404", function () {
+          pm.response.to.have.status(404);
+      });

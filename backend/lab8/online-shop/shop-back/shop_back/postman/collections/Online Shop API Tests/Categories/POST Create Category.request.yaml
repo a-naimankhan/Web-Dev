@@ -1,0 +1,34 @@
+$kind: http-request
+name: POST Create Category
+method: POST
+url: '{{baseUrl}}/api/categories/'
+order: 2000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "Electronics"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 201", function () {
+          pm.response.to.have.status(201);
+      });
+
+      pm.test("Response has id and name", function () {
+          const json = pm.response.json();
+          pm.expect(json).to.have.property('id');
+          pm.expect(json).to.have.property('name');
+      });
+
+      pm.test("Name equals Electronics", function () {
+          const json = pm.response.json();
+          pm.expect(json.name).to.eql("Electronics");
+      });
+
+      pm.collectionVariables.set("categoryId", pm.response.json().id);

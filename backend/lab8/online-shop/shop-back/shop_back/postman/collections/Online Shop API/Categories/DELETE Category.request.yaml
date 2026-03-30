@@ -1,0 +1,8 @@
+$kind: http-request
+name: DELETE Category
+method: DELETE
+url: '{{base_url}}/categories/1/'
+order: 6000
+headers:
+  - key: Content-Type
+    value: application/json

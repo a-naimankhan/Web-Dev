@@ -1,0 +1,26 @@
+$kind: http-request
+name: PATCH Partial Update Product
+method: PATCH
+url: '{{baseUrl}}/api/products/{{productId}}/'
+order: 5000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "price": 1199.99
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Price equals 1199.99", function () {
+          const json = pm.response.json();
+          pm.expect(parseFloat(json.price)).to.eql(1199.99);
+      });

@@ -1,0 +1,17 @@
+$kind: http-request
+name: GET Products by Category
+method: GET
+url: '{{baseUrl}}/api/categories/{{categoryId}}/products/'
+order: 6000
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response is an array", function () {
+          const json = pm.response.json();
+          pm.expect(json).to.be.an('array');
+      });

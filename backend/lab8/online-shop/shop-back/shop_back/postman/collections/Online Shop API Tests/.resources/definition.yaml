@@ -1,0 +1,10 @@
+$kind: collection
+name: Online Shop API Tests
+description: Comprehensive test suite for Django REST Framework online shop API
+variables:
+  - key: baseUrl
+    value: 'http://localhost:8000'
+  - key: categoryId
+    value: ''
+  - key: productId
+    value: ''
