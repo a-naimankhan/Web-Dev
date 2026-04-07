@@ -1,0 +1,40 @@
+<nav class="filters">
+  <a
+    [routerLink]="['/todos']"
+    [queryParams]="{status: ''}"
+    routerLinkActive="active"
+    >All</a
+  >
+  |
+  <a
+    [routerLink]="['/todos']"
+    [queryParams]="{status: 'completed'}"
+    routerLinkActive="active"
+    >Completed</a
+  >
+  |
+  <a
+    [routerLink]="['/todos']"
+    [queryParams]="{status: 'pending'}"
+    routerLinkActive="active"
+    >Pending</a
+  >
+</nav>
+
+<p class="summary">
+  Showing {{ filteredTodos.length }} of {{ allTodos.length }}
+</p>
+
+<ul class="todo-list">
+  @for (todo of filteredTodos; track todo.id) {
+    <li>
+      {{ todo.title}}
+        @if (todo.completed) {
+          <span>
+            (done)
+          </span>
+        }
+     </li>
+  }
+
+</ul>

@@ -1,0 +1,17 @@
+<div  class = searching-bar>
+  <input type = "text" (input)=""onSearch($event)" placeholder="Search-by-title..">
+</div>
+
+<section>
+  <h2>Albums</h2>
+  <div *ngIf="albums$ | async as albums; else loading">
+    <ul class="album-list">
+      <li *ngFor="let album of albums">
+        <span class="id">{{ album.id }}</span>
+        <a [routerLink]="['/albums', album.id]">{{ album.title }}</a>
+        <button class="delete" (click)="onDelete(album.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  <ng-template #loading>Loading...</ng-template>
+</section>

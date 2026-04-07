@@ -1,0 +1,143 @@
+{
+  "info": {
+    "name": "Bookstore API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authors",
+      "item": [
+        {
+          "name": "List all authors",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/authors/"
+          }
+        },
+        {
+          "name": "Create an author",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_url}}/api/authors/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Leo\",\n  \"last_name\": \"Tolstoy\",\n  \"birth_date\": \"1828-09-09\",\n  \"nationality\": \"Russian\",\n  \"bio\": \"Russian writer regarded as one of the greatest authors of all time.\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get author by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/authors/{{author_id}}/"
+          }
+        },
+        {
+          "name": "Update author",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_url}}/api/authors/{{author_id}}/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Leo\",\n  \"last_name\": \"Tolstoy\",\n  \"birth_date\": \"1828-09-09\",\n  \"nationality\": \"Russian\",\n  \"bio\": \"Updated bio.\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete author",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/api/authors/{{author_id}}/"
+          }
+        },
+        {
+          "name": "Get books by author",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/authors/{{author_id}}/books/"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "List all books",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/books/"
+          }
+        },
+        {
+          "name": "Create a book",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_url}}/api/books/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"War and Peace\",\n  \"isbn\": \"9780140447934\",\n  \"pages\": 1392,\n  \"price\": 19.99,\n  \"stock\": 10,\n  \"publish_date\": \"1869-01-01\",\n  \"is_available\": true,\n  \"authors\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Get book by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/books/{{book_id}}/"
+          }
+        },
+        {
+          "name": "Update book",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_url}}/api/books/{{book_id}}/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"War and Peace\",\n  \"isbn\": \"9780140447934\",\n  \"pages\": 1392,\n  \"price\": 24.99,\n  \"stock\": 5,\n  \"publish_date\": \"1869-01-01\",\n  \"is_available\": true,\n  \"authors\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete book",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/api/books/{{book_id}}/"
+          }
+        },
+        {
+          "name": "Get available books",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/books/available/"
+          }
+        },
+        {
+          "name": "Get out of stock books",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/books/out-of-stock/"
+          }
+        }
+      ]
+    }
+  ]
+}
