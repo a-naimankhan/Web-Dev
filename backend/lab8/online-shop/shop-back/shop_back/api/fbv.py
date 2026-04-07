@@ -24,6 +24,7 @@ def product_list(request):
 
 
 #Get update or delete the product
+#handwritten logic
 @api_view(['GET' , 'PUT' , 'DELETE'])
 def product_detail(request , pk : int):
     product = get_object_or_404(Product , pk=pk)

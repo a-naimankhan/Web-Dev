@@ -16,7 +16,7 @@ class ProductListMixins(mixins.ListModelMixin, mixins.CreateModelMixin, generics
     def post(self , request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
-
+#much more easier logic
 class ProductDetailMixins(mixins.RetrieveModelMixin, mixins.DestroyModelMixin, mixins.UpdateModelMixin, generics.GenericAPIView):
     queryset = Product.objects.all()
     serialize_class = ProductSerializer

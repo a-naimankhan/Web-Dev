@@ -24,6 +24,7 @@ class ProductListCBV(APIView):
 
 
 #getting , updating or deleting products
+#a lil easier logic
 class ProductDetailCBV(APIView):
     def get_object(self, pk : int):
         return get_object_or_404(Product , pk=pk)

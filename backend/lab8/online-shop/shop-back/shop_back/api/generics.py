@@ -24,7 +24,7 @@ class CategoryDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     lookup_url_kwarg = 'category_id'
-
+#no logic
 class CategoryProductsAPIView(APIView):
 
     def get(self , request , category_id: int):
